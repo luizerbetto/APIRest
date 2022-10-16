@@ -29,7 +29,6 @@ app.get('/people/:id', async (req, res) => {
  * Add one People
  */
 app.post(`/people`, async (req, res) => {
-    const { email, name, eventTile } = req.body
     const result = await prisma.people.create({
         data: { ...req.body },
     })
@@ -82,7 +81,6 @@ app.get('/event/:id', async (req, res) => {
  * Add Event
  */
 app.post(`/event`, async (req, res) => {
-    const { title, content, authorEmail } = req.body
     const result = await prisma.event.create({
         data: { ...req.body },
     })
