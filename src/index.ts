@@ -38,7 +38,7 @@ app.post(`/people`, async (req, res) => {
 /**
  * Update one People base on ID
  */
-app.put('/people/publish/:id', async (req, res) => {
+app.put('/people/update/:id', async (req, res) => {
     const { id } = req.params
     const event = await prisma.people.update({
         where: { id: Number(id) },
@@ -90,11 +90,11 @@ app.post(`/event`, async (req, res) => {
 /**
  * Publish one Event
  */
-app.put('/event/publish/:id', async (req, res) => {
+app.put('/event/update/:id', async (req, res) => {
     const { id } = req.params
     const event = await prisma.event.update({
         where: { id: Number(id) },
-        data: { published: true },
+        data: { ...req.body },
     })
     res.json(event)
 })
